@@ -1,8 +1,8 @@
 <?php
 
-    require_once 'CrudModel.php';
+    require_once 'MVC_Model_for_CRUD_application.php';
 
-    class CrudController {
+    class MVC_Controller_for_CRUD_application {
     private $model;
 
     public function __construct($model) {
