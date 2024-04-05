@@ -1,7 +1,5 @@
 <?php 
-  require_once 'CrudController.php';
-  include('crud_connect.php');
-
+  require_once 'MVC_Controller_for_CRUD_application.php';
  if(isset($_REQUEST['submit']))
  {
 
@@ -11,8 +9,8 @@
  	  $ad=$_REQUEST['address'];
     $hidden_id=$_REQUEST['updating_hidden_id'];
 
-    $model = new CrudModel(HOSTNAME, USERNAME, PASSWORD, DATABASE);
-    $controller = new CrudController($model);
+    $model = new MVC_Model_for_CRUD_application(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+    $controller = new MVC_Controller_for_CRUD_application($model);
     $result = $controller->updateEmployee($hidden_id, $user, $email, $dg, $ad);
     if($result)
     {
