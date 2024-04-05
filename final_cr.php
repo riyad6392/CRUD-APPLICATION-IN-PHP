@@ -1,14 +1,6 @@
 <?php
- define("HOSTNAME","localhost");
- define("USERNAME","root");
- define("PASSWORD","");
- define("DATABASE","employee_crud");
- $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE);
-
- if(!$connection)
- {
-   die("connection faild");
- }
+  require_once 'CrudController.php';
+    include('crud_connect.php');
 
    if(isset($_REQUEST['submit']))
  {
@@ -23,14 +15,10 @@
     $st_f=$_REQUEST['status'];
 
 
-
-
-
-   // $update_query="UPDATE employee set name='$user',email='$email',designation='$dg',address='$ad' WHERE id=$hidden_id";
-    $insert_query = "INSERT INTO employee (name, email, designation, address,id,salary,status) VALUES ('$user', '$email', '$dg', '$ad','$id_f','$sl_f','$st_f')";
-
-    $final_update_query=mysqli_query($connection,$insert_query);
-    if($final_update_query)
+    $model = new CrudModel(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+    $controller = new CrudController($model);
+    $result = $controller->createEmployee($user, $email, $dg, $ad,$id_f,$sl_f,$st_f);
+    if($result)
     {
 
       header("location:index.php?updated");
