@@ -1,8 +1,7 @@
 <?php
-   require_once 'CrudController.php';
-   include('crud_connect.php');
+   require_once 'MVC_Controller_for_CRUD_application.php';
    ?>
-     <form action="final_cr.php" method="post">
+     <form action="final_data_create.php" method="post">
         <input type="text" name="name"  placeholder="name">
         <input type="email" name="email"  placeholder="email">
         <input type="text" name="designation"  placeholder="designation">
