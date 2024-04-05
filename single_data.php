@@ -1,22 +1,14 @@
 <?php
- define("HOSTNAME","localhost");
- define("USERNAME","root");
- define("PASSWORD","");
- define("DATABASE","employee_crud");
- $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE);
-
- if(!$connection)
- {
-   die("connection faild");
- }
+  require_once 'CrudController.php';
+   include('crud_connect.php');
 
  if(isset($_REQUEST['edit_id']))
  {
   $recv_id=$_REQUEST['edit_id'];
-  $get_info="SELECT * FROM employee WHERE id=$recv_id";
-  $select_info = mysqli_query($connection,$get_info);
-
-  while($row=mysqli_fetch_assoc($select_info))
+  $model = new CrudModel(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+  $controller = new CrudController($model);
+  $result = $controller->getAllEmploy($recv_id);
+  while($row=mysqli_fetch_assoc($result))
   {
     
 
@@ -37,5 +29,7 @@
  }
 
 ?>
+
+  
 
   
