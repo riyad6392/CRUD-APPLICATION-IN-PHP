@@ -1,25 +1,17 @@
-<?php 
- //define("HOSTNAME","localhost");
- //define("USERNAME","root");
- //define("PASSWORD","");
- //define("DATABASE","employee_crud");
-if (!defined("HOSTNAME")) {
-    define("HOSTNAME", "localhost");
-}
-if (!defined("USERNAME")) {
-    define("USERNAME", "root");
-}
-if (!defined("PASSWORD")) {
-    define("PASSWORD", "");
-}
-if (!defined("DATABASE")) {
-    define("DATABASE", "employee_crud");
-}
- $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE);
+<?php
 
- if(!$connection)
- {
- 	die("connection faild");
- }
- 
+class Database {
+    private $connection;
+
+    public function __construct($host, $username, $password, $database) {
+        $this->connection = new mysqli($host, $username, $password, $database);
+        if ($this->connection->connect_error) {
+            die("Connection failed: " . $this->connection->connect_error);
+        }
+    }
+
+    public static function getConnection() {
+        return $this->connection;
+    }
+}
 ?>
