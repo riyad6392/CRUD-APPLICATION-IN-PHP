@@ -1,13 +1,13 @@
 <?php
 
-include('database.php');
+include('DatabaseConnection.php');
 
 class CrudModel {
     private $connection;
 
-    public function __construct()
+   public function __construct()
     {
-          $connection = Database::getConnection();
+        $this->connection = DatabaseConnection::getConnection();
     }
 
     public function getAllEmployees() {
