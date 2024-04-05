@@ -1,17 +1,24 @@
 <?php
 
-class Database {
-    private $connection;
+define("HOSTNAME", "localhost");
+define("USERNAME", "root");
+define("PASSWORD", "");
+define("DATABASE", "employee_crud");
 
-    public function __construct($host, $username, $password, $database) {
-        $this->connection = new mysqli($host, $username, $password, $database);
-        if ($this->connection->connect_error) {
-            die("Connection failed: " . $this->connection->connect_error);
-        }
-    }
+class DatabaseConnection {
+    private static $connection;
 
     public static function getConnection() {
-        return $this->connection;
+        if (!isset(self::$connection)) {
+            self::$connection = new mysqli(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+            if (self::$connection->connect_error) {
+                die("Connection failed: " . self::$connection->connect_error);
+            }
+        }
+
+        return self::$connection;
     }
 }
+
 ?>
+
