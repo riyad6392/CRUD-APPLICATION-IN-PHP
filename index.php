@@ -1,11 +1,8 @@
 
 <?php
-require_once 'CrudController.php';
-
-include('crud_connect.php');
-
-$model = new CrudModel(HOSTNAME, USERNAME, PASSWORD, DATABASE);
-$controller = new CrudController($model);
+require_once 'MVC_Controller_for_CRUD_application.php';
+$model = new MVC_Model_for_CRUD_application(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+$controller = new MVC_Controller_for_CRUD_application($model);
 $result = $controller->getAllEmployees();
 ?>
 
@@ -20,7 +17,7 @@ $result = $controller->getAllEmployees();
 	
 <h1> CRUD APPLICATION IN PHP</h1>
 
- <a href="create_data.php"> <button>CREATE!</button></a>
+ <a href="create_employ_data.php"> <button>CREATE!</button></a>
 
 <table class="table">
 	<thead class="thead-dark">
@@ -60,7 +57,7 @@ $result = $controller->getAllEmployees();
 			  <td>&ensp;<?php echo $row['salary'];?></td>
 			  <td>&ensp;<?php echo $row['status'];?></td>
 
-			<td> <a href="single_data.php?edit_id=<?php echo $db_id;?>">Edit</a> || <a href="delete.php?id=<?php echo $db_id ?>">Delete</a></td>
+			<td> <a href="single_employ_data.php?edit_id=<?php echo $db_id;?>">Edit</a> || <a href="delete_employ_data.php?id=<?php echo $db_id ?>">Delete</a></td>
 		</tr>
          		<?php
          	}
