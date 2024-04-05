@@ -1,7 +1,6 @@
 <?php
-  require_once 'CrudController.php';
-    include('crud_connect.php');
-
+  require_once 'MVC_Controller_for_CRUD_application.php';
+   
    if(isset($_REQUEST['submit']))
  {
 
@@ -15,8 +14,8 @@
     $st_f=$_REQUEST['status'];
 
 
-    $model = new CrudModel(HOSTNAME, USERNAME, PASSWORD, DATABASE);
-    $controller = new CrudController($model);
+    $model = new MVC_Model_for_CRUD_application(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+    $controller = new MVC_Controller_for_CRUD_application($model);
     $result = $controller->createEmployee($user, $email, $dg, $ad,$id_f,$sl_f,$st_f);
     if($result)
     {
