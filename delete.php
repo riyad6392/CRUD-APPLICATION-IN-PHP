@@ -1,20 +1,16 @@
 <?php
- define("HOSTNAME","localhost");
- define("USERNAME","root");
- define("PASSWORD","");
- define("DATABASE","employee_crud");
- $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE);
-
- if(!$connection)
- {
-   die("connection faild");
- }
- $recv=$_REQUEST['id'];
-
- $query = "DELETE FROM employee	WHERE id=$recv";
- $run_delete_query = mysqli_query($connection,$query);
- if($run_delete_query)
+  require_once 'CrudController.php';
+  include('crud_connect.php');
+$recv=$_REQUEST['id'];
+$model = new CrudModel(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+$controller = new CrudController($model);
+$result = $controller->deleteEmployee($recv);
+ 
+if($result)
  {
      	header("location:index.php?deleted");
  }
+  
+  
+    
 ?>
