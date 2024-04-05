@@ -2,7 +2,7 @@
 
 include('DatabaseConnection.php');
 
-class CrudModel {
+class MVC_Model_for_CRUD_application {
     private $connection;
 
    public function __construct()
