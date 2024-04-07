@@ -1,0 +1,9 @@
+{
+    "name": "riyadahamed/crud_mvc",
+    "require": { },
+    "autoload": {
+        "psr-4": {
+            "MyApp\\": "src/"
+        }
+    }
+}
