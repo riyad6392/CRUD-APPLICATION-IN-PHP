@@ -1,4 +1,5 @@
 <?php
+namespace MyApp;
 
 define("HOSTNAME", "localhost");
 define("USERNAME", "root");
@@ -10,7 +11,7 @@ class DatabaseConnection {
 
     public static function getConnection() {
         if (!isset(self::$connection)) {
-            self::$connection = new mysqli(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+            self::$connection = new \mysqli(HOSTNAME, USERNAME, PASSWORD, DATABASE);
             if (self::$connection->connect_error) {
                 die("Connection failed: " . self::$connection->connect_error);
             }
