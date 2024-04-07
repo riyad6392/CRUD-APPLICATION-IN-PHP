@@ -1,6 +1,6 @@
 <?php
-
-    require_once 'MVC_Model_for_CRUD_application.php';
+    namespace MyApp;
+    require 'vendor/autoload.php';
 
     class MVC_Controller_for_CRUD_application {
     private $model;
