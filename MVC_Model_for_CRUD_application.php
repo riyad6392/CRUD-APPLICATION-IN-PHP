@@ -1,6 +1,7 @@
 <?php
 
-include('DatabaseConnection.php');
+require 'vendor/autoload.php';
+use MyApp\DatabaseConnection;
 
 class MVC_Model_for_CRUD_application {
     private $connection;
