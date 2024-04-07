@@ -1,5 +1,6 @@
 <?php
-  require_once 'MVC_Controller_for_CRUD_application.php'; 
+ namespace MyApp;
+ require 'vendor/autoload.php';
 
  if(isset($_REQUEST['edit_id']))
  {
